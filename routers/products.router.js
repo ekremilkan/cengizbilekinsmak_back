@@ -1,35 +1,38 @@
 const express = require("express");
 const router = express.Router();
-const productsController = require("../controllers/products.controller");
+const controller = require("../controllers/index");
+const { products } = require("../services");
 
 // Ana ürün oluşturma
-router.post("/main-product", productsController.createMainProductController);
+router.post("/mainProduct", controller.productsController.createMainProduct);
 
 // Alt ürün oluşturma
-router.post("/sub-product", productsController.createSubProductController);
+router.post("/subProduct", controller.productsController.createSubProduct);
 
 // Ana ürünleri listeleme
-router.get("/main-products", productsController.getMainProductsController);
+router.get("/mainProducts", controller.productsController.getMainProducts);
 
 // Ana ürün ID ile sorgulama
 router.get(
-  "/main-product/:id",
-  productsController.getMainProductByIdController
+  "/mainProduct/:id",
+  controller.productsController.getMainProductById
 );
 
 // Alt ürün ID ile sorgulama
-router.get("/sub-product/:id", productsController.getSubProductByIdController);
+router.get("/subProduct/:id", controller.productsController.getSubProductById);
 
 // Ana ürünü ve alt ürünleri silme
 router.delete(
-  "/main-product/:id",
-  productsController.deleteMainProductController
+  "/mainProduct/:id",
+  controller.productsController.deleteMainProduct
 );
 
 // Alt ürünü silme
 router.delete(
-  "/sub-product/:id",
-  productsController.deleteSubProductController
+  "/subProduct/:id",
+  controller.productsController.deleteSubProduct
 );
 
-module.exports = router;
+module.exports = {
+  products: router,
+};

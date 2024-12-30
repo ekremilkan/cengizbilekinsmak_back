@@ -2,9 +2,9 @@ const { StatusCodes } = require("http-status-codes");
 const productsService = require("../services/index");
 const baseResponse = require("../dto/baseresponse.dto");
 
-exports.createMainProductController = async (req, res) => {
+exports.createMainProduct = async (req, res) => {
   try {
-    const data = await productsService.createMainProduct(req);
+    const data = await productsService.products.createMainProduct(req);
     res.status(StatusCodes.CREATED).json({
       ...baseResponse,
       data: data,
@@ -25,9 +25,9 @@ exports.createMainProductController = async (req, res) => {
   }
 };
 
-exports.createSubProductController = async (req, res) => {
+exports.createSubProduct = async (req, res) => {
   try {
-    const data = await productsService.createSubProduct(req);
+    const data = await productsService.products.createSubProduct(req);
     res.status(StatusCodes.CREATED).json({
       ...baseResponse,
       data: data,
@@ -48,9 +48,9 @@ exports.createSubProductController = async (req, res) => {
   }
 };
 
-exports.getMainProductsController = async (req, res) => {
+exports.getMainProducts= async (req, res) => {
   try {
-    const data = await productsService.getMainProducts();
+    const data = await productsService.products.getMainProducts();
     res.status(StatusCodes.OK).json({
       ...baseResponse,
       data: data,
@@ -71,9 +71,9 @@ exports.getMainProductsController = async (req, res) => {
   }
 };
 
-exports.getMainProductByIdController = async (req, res) => {
+exports.getMainProductById = async (req, res) => {
   try {
-    const data = await productsService.getMainProductById(req);
+    const data = await productsService.products.getMainProductById(req);
     res.status(StatusCodes.OK).json({
       ...baseResponse,
       data: data,
@@ -94,9 +94,9 @@ exports.getMainProductByIdController = async (req, res) => {
   }
 };
 
-exports.getSubProductByIdController = async (req, res) => {
+exports.getSubProductById = async (req, res) => {
   try {
-    const data = await productsService.getSubProductById(req);
+    const data = await productsService.products.getSubProductById(req);
     res.status(StatusCodes.OK).json({
       ...baseResponse,
       data: data,
@@ -117,9 +117,9 @@ exports.getSubProductByIdController = async (req, res) => {
   }
 };
 
-exports.deleteMainProductController = async (req, res) => {
+exports.deleteMainProduct = async (req, res) => {
   try {
-    const data = await productsService.deleteMainProduct(req);
+    const data = await productsService.products.deleteMainProduct(req);
     res.status(StatusCodes.OK).json({
       ...baseResponse,
       data: data,
@@ -140,9 +140,9 @@ exports.deleteMainProductController = async (req, res) => {
   }
 };
 
-exports.deleteSubProductController = async (req, res) => {
+exports.deleteSubProduct = async (req, res) => {
   try {
-    const data = await productsService.deleteSubProduct(req);
+    const data = await productsService.products.deleteSubProduct(req);
     res.status(StatusCodes.OK).json({
       ...baseResponse,
       data: data,
