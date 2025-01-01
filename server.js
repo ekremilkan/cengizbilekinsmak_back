@@ -6,12 +6,11 @@ const middlewares = require("./middlewares/index");
 const cors = require("cors");
 const router = require("./routers/index");
 const consts = require("./consts/index");
-
+const productsRouter = require("./routers/products.router")
 const app = express();
 
 // CORS yapılandırması
 const corsOptions = {
-  origin: "*",
   credentials: true,
   optionsSuccessStatus: 200,
 };
@@ -39,6 +38,7 @@ app.use(
   `${process.env.APP_PREFIX}${consts.router.IMAGES}`,
   router.imagesRouter
 );
+app.use("/api/products", productsRouter.products)
 
 db.mongooseConnection.connectMongoDB().then(() => {
   app.listen(PORT, () => {
