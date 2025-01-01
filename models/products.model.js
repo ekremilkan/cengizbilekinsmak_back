@@ -15,7 +15,7 @@ const SubProductSchema = new Schema({
     type: String,
   }, // Alt ürünün fotoğraf URL'si
   mainProduct: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "MainProduct",
   }, // Bağlı olduğu ana ürün
 });
@@ -34,7 +34,7 @@ const MainProductSchema = new Schema({
   }, // Ana ürünün fotoğraf URL'si
   subProducts: [
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "SubProduct",
     },
   ], // Alt ürünlerin referansları
