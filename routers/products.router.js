@@ -14,7 +14,7 @@ router.get("/mainProducts", controller.productsController.getMainProducts);
 
 // Ana ürün ID ile sorgulama
 router.get(
-  "/mainProduct/:id",
+  "/mainProductById/:id",
   controller.productsController.getMainProductById
 );
 
@@ -31,6 +31,10 @@ router.delete(
 router.delete(
   "/subProduct/:id",
   controller.productsController.deleteSubProduct
+);
+router.get(
+  "/getMainProductByTitle/:title",
+  controller.productsController.getMainProductByTitle
 );
 
 module.exports = {

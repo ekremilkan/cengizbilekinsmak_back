@@ -48,7 +48,7 @@ exports.createSubProduct = async (req, res) => {
   }
 };
 
-exports.getMainProducts= async (req, res) => {
+exports.getMainProducts = async (req, res) => {
   try {
     const data = await productsService.products.getMainProducts();
     res.status(StatusCodes.OK).json({
@@ -148,6 +148,29 @@ exports.deleteSubProduct = async (req, res) => {
       data: data,
       timestamp: new Date(),
       message: "Alt ürün başarıyla silindi",
+      code: StatusCodes.OK,
+    });
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      ...baseResponse,
+      success: false,
+      error: true,
+      timestamp: new Date(),
+      message: "Hata oluştu",
+      errorMessage: error.message,
+      code: StatusCodes.INTERNAL_SERVER_ERROR,
+    });
+  }
+};
+
+exports.getMainProductByTitle = async (req, res) => {
+  try {
+    const data = await productsService.products.getMainProductByTitle(req);
+    res.status(StatusCodes.OK).json({
+      ...baseResponse,
+      data: data,
+      timestamp: new Date(),
+      message: "Ana ürün başarıyla getirildi",
       code: StatusCodes.OK,
     });
   } catch (error) {

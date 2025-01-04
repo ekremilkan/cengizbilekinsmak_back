@@ -68,7 +68,7 @@ exports.getMainProducts = async () => {
 exports.getMainProductById = async (req) => {
   try {
     const { id } = req.params;
-    const mainProduct = await MainProduct.findById(id).populate("subProducts");
+    const mainProduct = await MainProduct.findById(id);
     if (!mainProduct) {
       throw new Error("Ana ürün bulunamadı.");
     }
@@ -131,6 +131,16 @@ exports.deleteSubProduct = async (req) => {
     await SubProduct.findByIdAndDelete(id);
 
     return { message: "Alt ürün başarıyla silindi." };
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+exports.getMainProductByTitle = async (req) => {
+  try {
+    const { title } = req.params;
+    const mainProduct = await MainProduct.findOne({ name: title });
+    return mainProduct;
   } catch (error) {
     throw new Error(error.message);
   }
