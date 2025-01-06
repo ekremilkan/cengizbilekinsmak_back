@@ -7,10 +7,6 @@ const SubProductSchema = new Schema({
     required: true,
   }, // Alt ürünün adı
 
-  description: {
-    type: String,
-  }, // Alt ürünün açıklaması
-
   imageUrl: {
     type: String,
   }, // Alt ürünün fotoğraf URL'si
@@ -18,6 +14,7 @@ const SubProductSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "MainProduct",
   }, // Bağlı olduğu ana ürün
+  details: { type: String },
 });
 
 // Ana Ürün Şeması

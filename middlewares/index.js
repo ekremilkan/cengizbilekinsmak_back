@@ -1,7 +1,7 @@
-const ImageMiddleware = require("./image.middleware");
+const singleImageUploadMiddleware = require("./singleImage.middleware");
 const loggerMiddleware = require("./logger.middleware");
 
 module.exports = {
-  ImageMiddleware,
+  singleImageUploadMiddleware,
   loggerMiddleware,
 };
