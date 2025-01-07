@@ -3,7 +3,7 @@ const { MainProduct, SubProduct } = require("../models/products.model");
 // Ana Ürün Oluşturma
 exports.createMainProduct = async (req) => {
   try {
-    const { name, description, imageUrl, subProducts } = req.body;
+    const { name, description, imageUrl, subProducts, details } = req.body;
 
     // Aynı isimde bir ürün var mı kontrol et
     const existProduct = await MainProduct.findOne({ name });
@@ -16,6 +16,7 @@ exports.createMainProduct = async (req) => {
       description,
       imageUrl,
       subProducts,
+      details,
     });
     await mainProduct.save();
     return mainProduct;
@@ -27,7 +28,7 @@ exports.createMainProduct = async (req) => {
 // Alt Ürün Oluşturma
 exports.createSubProduct = async (req) => {
   try {
-    const { name, description, imageUrl, mainProductId } = req.body;
+    const { name, imageUrl, mainProductId, details } = req.body;
 
     // Ana ürün var mı kontrol et
     const mainProduct = await MainProduct.findById(mainProductId);
@@ -37,8 +38,8 @@ exports.createSubProduct = async (req) => {
 
     const subProduct = new SubProduct({
       name,
-      description,
       imageUrl,
+      details,
       mainProduct: mainProductId,
     });
     await subProduct.save();

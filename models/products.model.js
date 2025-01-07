@@ -14,7 +14,7 @@ const SubProductSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "MainProduct",
   }, // Bağlı olduğu ana ürün
-  details: { type: String },
+  details: { type: [String] },
 });
 
 // Ana Ürün Şeması
