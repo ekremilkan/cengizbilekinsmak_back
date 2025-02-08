@@ -25,7 +25,7 @@ exports.uploadImageSystem = (req, res) => {
         reject(err);
       }
       // const ip = await utils.helper.getHost();
-      const ip = "http://localhost:5005";
+      const ip = "https://cengizbilekinsaatmakinalari.com/";
       const filePath = process.env.FILE_PATH || "/uploads/";
       const fileName = req.file.filename;
       // URL'deki portu kaldırarak HTTPS ile oluşturuyoruz

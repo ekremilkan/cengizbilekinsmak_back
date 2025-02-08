@@ -3,13 +3,9 @@ const fileService = require("./file.service");
 
 exports.uploadImage = async (req, res) => {
   try {
-    const { type } = req.params;
     const str = await fileService.uploadImageSystem(req, res);
-    console.log(str);
     const image = new Images({
       url: str.fileString,
-      type: type,
-      name: str.name,
     });
     image.save();
     return image;
